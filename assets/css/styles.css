@@ -406,6 +406,15 @@ body {
 .site-footer {
   margin-top: auto;         /* push footer to the very bottom */
 }
+/* hide the toggle on desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
+}
 
 /* ── Responsive margins for mobile ───────────────────────────────── */
 @media (max-width: 600px) {
@@ -421,16 +430,6 @@ body {
 /* ensure header can position the dropdown */
 .site-header {
   position: relative;
-}
-
-/* hide the toggle on desktop */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--text);
-  cursor: pointer;
 }
 
 /* small-screen styles */
