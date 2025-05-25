@@ -1,0 +1,408 @@
+/* minimal.css  ── a tiny, elegant baseline style
+   --------------------------------------------------
+   • Neutral colour palette
+   • System font stack for speed + legibility
+   • Roomy vertical rhythm
+   • Subtle transitions & focus outlines
+   • Dark-mode ready (prefers-color-scheme)
+   -------------------------------------------------- */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #626262;
+    --accent: #0066ff;
+    --radius: 6px;
+    --max-width: 100ch;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    --font-mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0f0f0f;
+        --text: #f2f2f2;
+        --muted: #9d9d9d;
+        --accent: #4c9aff;
+    }
+}
+
+/* ---------- Global Reset ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--accent);
+    text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    transition: text-decoration-color 200ms ease;
+}
+a:hover,
+a:focus-visible {
+    text-decoration-color: var(--accent);
+}
+
+ul, ol {
+    padding-inline-start: 1.25rem;
+}
+
+code, pre {
+    font-family: var(--font-mono);
+    font-size: 0.93rem;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    border-radius: var(--radius);
+    padding: 0.15em 0.35em;
+}
+
+/* ---------- Layout Helpers ---------- */
+.container {
+    max-width: var(--max-width);
+    padding: 1rem 1.25rem;
+    margin-inline: auto;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.25;
+    margin: 2.2rem 0 0.9rem;
+    font-weight: 600;
+}
+h1 { font-size: clamp(2rem, 5vw, 2.6rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1.05rem; }
+h6 { font-size: 1rem; }
+
+p, ul, ol, pre, table, blockquote {
+    margin-block: 1.1rem;
+}
+
+blockquote {
+    border-inline-start: 0.25rem solid var(--accent);
+    padding-inline-start: 1rem;
+    color: var(--muted);
+    font-style: italic;
+}
+
+/* ---------- Buttons & Forms ---------- */
+button,
+input[type="submit"],
+input[type="button"] {
+    font: inherit;
+    cursor: pointer;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: var(--radius);
+    transition: background 200ms ease;
+}
+button:hover,
+button:focus-visible {
+    background: color-mix(in srgb, var(--accent) 85%, #000);
+}
+input, textarea, select {
+    font: inherit;
+    padding: 0.45em 0.6em;
+    border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent);
+    border-radius: var(--radius);
+    width: 100%;
+}
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Tables ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 0.6em 0.8em;
+    border-bottom: 1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+    text-align: left;
+}
+thead th {
+    border-bottom: 2px solid var(--accent);
+}
+
+/* ---------- Utility Classes ---------- */
+.center-text { text-align: center; }
+.muted { color: var(--muted); }
+.rounded { border-radius: var(--radius); }
+
+/* ---------- Smooth Fade for Page Loads ---------- */
+body {
+    opacity: 0;
+    animation: fade-in 300ms ease-out forwards;
+}
+@keyframes fade-in {
+    to { opacity: 1; }
+}
+
+/* ---------- Header ---------- */
+/* --- simple single-row header --- */
+.site-header {
+    border-bottom: 1px solid var(--muted);
+    margin-bottom: 2rem;          /* space below header */
+  }
+  
+  .header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .site-title {
+    margin: 0;                    /* kill default h1 spacing */
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.25rem;                 /* spacing between links */
+  }
+  
+  .site-nav a {
+    text-decoration: none;
+    font-weight: 500;
+    color: inherit; 
+  }
+
+  .site-title a{
+    color: inherit;          /* no blue */ 
+    text-decoration: none;   /* no underline */
+  }
+  
+  .site-nav a:hover,
+  .site-nav a:focus-visible {
+    color: var(--accent);
+  }
+  
+
+/* ---- about page tweaks ---- */
+.about-wrapper {
+    display: flex;             /* put photo + text on one row   */
+    align-items: center;       /* text sits vertically centred  */
+    gap: 2rem;                 /* space between photo & text    */
+    max-width: var(--max-width);
+    margin: 0 auto;
+    flex-direction: row;
+  }
+  
+  .profile-pic {
+    flex: 0 0 210px;           /* fixed-width circle            */
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+  }
+  
+  /* centre the copy instead of justifying it */
+  .about-wrapper p {
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+  
+  /* stack photo over text on narrow screens */
+  @media (max-width: 600px) {
+    .about-wrapper {
+      flex-direction: column;
+    }
+    .about-wrapper p {
+      text-align: left;        /* avoids awkward centring on very narrow lines */
+    }
+  }
+  
+  /* ---- about page: keep paragraphs in one column ---- */
+.about-text {
+    display: flex;           /* stack paragraphs vertically */
+    flex-direction: column;
+    align-items: center; 
+    flex-wrap: wrap;    /* keeps them horizontally centred */
+  }
+  
+  .about-text p {
+    text-align: justify;      /* preserve centred copy */
+    margin: 0.5rem 0;
+  }
+  
+  /* ── footnotes: tiny & centred ─────────────────────────────── */
+.footnotes {
+  font-size: 0.65rem;    /* make the text small            */
+  text-align: right;    /* centre the whole block          */
+  margin-top: 1.5rem;    /* a little breathing room above   */
+  margin-right: 25rem;
+  padding: 0;
+  list-style: none;      /* hide the default numbers (superscript marker is enough) */
+}
+
+.footnotes li {
+  display: inline-block; /* keep the footnote text centred under its marker */
+}
+
+.footnote-ref {
+  font-size: 0.60rem;    /* shrink the superscript marker too */
+  vertical-align: super; /* keep it nicely above the baseline */
+}
+
+/* --- CV download button ------------------------------------ */
+.download-btn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background 200ms ease;
+}
+.download-btn:hover,
+.download-btn:focus-visible {
+  background: color-mix(in srgb, var(--accent) 85%, #000);
+}
+
+
+/* ---- publication list ---- */
+.pub-list {
+  list-style-position: inside;   /* numbers line up with centred text */
+  padding: 0;
+  margin: 0 auto;
+  text-align: justify;
+  line-height: 1.5;
+  list-style: none;
+  flex-direction: column;
+  display: flex;
+  align-items: justify;
+  max-width: max-content;
+}
+
+.pub-list-header {
+  padding: 0;
+  margin: 1rem auto;
+  text-align: left;
+  line-height: 1.5;
+  flex-direction: column;
+  display: flex;
+  align-items: left;
+  max-width: max-content;
+}
+
+.pub-list li + li {
+  margin-top: 0.6rem;            /* small gap, no big blank space */
+}
+
+/* ---- blog index list ---- */
+.blog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+.blog-list li + li {
+  margin-top: 2rem;
+}
+
+.post-title {
+  margin: 0 0 0.2rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.post-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-title a:hover,
+.post-title a:focus-visible {
+  color: var(--accent);
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  margin: 0 0 0.6rem;
+}
+
+.post-excerpt {
+  margin: 0;
+}
+
+
+
+/* ---- footer ---- */
+.site-footer {
+  border-top: 1px solid var(--muted);
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  gap: 1.2rem;          /* space between icons */
+}
+
+.social-links a {
+  display: inline-flex;
+  line-height: 0;
+  color: var(--text);
+  opacity: 0.85;
+  transition: opacity 150ms ease;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  opacity: 1;
+  color: var(--accent); /* icon tint on hover */
+}
+
+.social-links svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---- sticky footer layout --------------------------------- */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;   /* header → main → footer */
+  min-height: 100vh;        /* fill the viewport */
+}
+
+.site-main {
+  flex: 1 0 auto;           /* grow to take all remaining space */
+}
+
+.site-footer {
+  margin-top: auto;         /* push footer to the very bottom */
+}
