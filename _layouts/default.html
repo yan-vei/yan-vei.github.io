@@ -5,6 +5,7 @@
     <title>{{ page.title }}</title>
     <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     {% include header.html %}
@@ -13,4 +14,17 @@
     </main>
     {% include footer.html %}
   </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.site-nav');
+  
+      btn.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    });
+  </script>
+  
 </html>
