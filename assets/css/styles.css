@@ -252,9 +252,8 @@ body {
   /* ── footnotes: tiny & centred ─────────────────────────────── */
 .footnotes {
   font-size: 0.65rem;    /* make the text small            */
-  text-align: right;    /* centre the whole block          */
+  text-align: center;    /* centre the whole block          */
   margin-top: 1.5rem;    /* a little breathing room above   */
-  margin-right: 25rem;
   padding: 0;
   list-style: none;      /* hide the default numbers (superscript marker is enough) */
 }
