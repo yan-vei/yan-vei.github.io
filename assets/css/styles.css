@@ -438,6 +438,10 @@ body {
     display: block;
   }
 
+  .footnotes, .footnote-ref {
+    display: none;
+  }
+
   /* hide the nav by default */
   .site-nav {
     display: none;
