@@ -474,3 +474,52 @@ body {
     outline: none;              /* if you really don’t want a focus ring */
 }
 }
+
+/* ---- news page tweaks ---- */
+.news-wrapper{
+  display:flex;flex-direction:column;gap:2.5rem;max-width:var(--max-width);margin:0 auto;padding-top:0.5rem}
+.news-title{text-align:center;margin:0.5rem 0 1.5rem}
+.news-item time{font-size:0.85rem;color:var(--text-light,#727272);margin-bottom:0.25rem}
+.news-headline{margin:0;font-size:1.25rem;line-height:1.3}
+.news-item p{margin:0.5rem 0 0;max-width:40rem}
+.news-item a{text-decoration:none;color:inherit}
+.news-item a:hover{text-decoration:underline}
+@media(max-width:600px){
+  .news-wrapper{gap:1.75rem}
+  .news-headline{font-size:1.1rem}
+}
+
+/* ---- single post tweaks ---- */
+
+.post-title{
+  margin:0 0 0.5rem;
+}
+.post-wrapper time{
+  font-size:0.85rem;
+  color:var(--text-light,#727272);
+  margin-bottom:1.5rem;
+}
+.post-content{
+  text-align:left;          /* regular paragraph flow */
+  max-width:40rem;
+}
+
+/* ── news-list: centred block, left-aligned text ───────────── */
+.news-item{
+  /* centre the whole post block in the viewport */
+  margin: 0 auto;            /* auto left/right → centred       */
+  max-width: 40rem;          /* optional: stops lines getting wide */
+  
+  /* keep the *text itself* left-aligned */
+  text-align: left;          
+  align-items: flex-start;   /* headline/date hug the left edge */
+}
+
+/* ── single-post page (if you added _layouts/post.html) ────── */
+.post-wrapper{
+  margin: 0 auto;
+  max-width: 40rem;          /* same comfortable width cap      */
+  text-align: left;
+  align-items: flex-start;
+}
+

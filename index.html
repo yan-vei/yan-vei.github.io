@@ -1,20 +1,28 @@
 ---
-permalink: /   
+layout: default       
+title: Yana Veitsman
+permalink: /
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- instant client-side redirect -->
-  <meta http-equiv="refresh" content="0; url=/about/">
+<div class="news-wrapper">
+  
+  <h3 class="news-title">Hi and welcome to my personal page! <br>Here are some new things that happened.
+  </h3>
 
-  <!-- canonical hint for search engines -->
-  <link rel="canonical" href="/about/">
+  <!-- Loop through all Jekyll posts, newest first -->
+  {% for post in site.posts %}
+    <article class="news-item">
+      <time datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%B %-d, %Y" }}
+      </time>
 
-  <meta charset="utf-8">
-  <title>Redirecting…</title>
-</head>
-<body>
-  <p>If you are not redirected automatically, <a href="/about/">click here</a>.</p>
-</body>
-</html>
+      <h2 class="news-headline">
+          {{ post.title }}
+      </h2>
+
+      <!-- 140-char excerpt: first paragraph or explicit excerpt -->
+      <p>{{ post.excerpt | truncatewords: 140 | markdownify }}</p>
+    </article>
+  {% endfor %}
+
+</div>

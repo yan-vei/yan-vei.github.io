@@ -1,0 +1,13 @@
+<article class="post-wrapper">
+
+  <h1 class="post-title">{{ page.title }}</h1>
+
+  <time datetime="{{ page.date | date_to_xmlschema }}">
+    {{ page.date | date: "%B %-d, %Y" }}
+  </time>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
