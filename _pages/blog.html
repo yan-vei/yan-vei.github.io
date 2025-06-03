@@ -8,20 +8,4 @@ permalink: /blog/
 
 <ul class="blog-list">
 
-  {%- for post in site.posts %}
-    <li>
-      <h2 class="post-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
-      <p class="post-meta muted">
-        {{ post.date | date: "%B %-d, %Y" }}
-        {%- if post.author %} · {{ post.author }}{% endif %}
-      </p>
-
-      {%- if post.excerpt %}
-        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
-      {%- endif %}
-    </li>
-  {%- endfor %}
-
 </ul>

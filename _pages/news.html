@@ -1,0 +1,28 @@
+---
+layout: default       
+title: Yana Veitsman
+permalink: /news/
+---
+
+<div class="news-wrapper">
+  
+  <h3 class="news-title">Hi and welcome to my personal page! <br>Here are some new things that happened.
+  </h3>
+
+  <!-- Loop through all Jekyll posts, newest first -->
+  {% for post in site.posts %}
+    <article class="news-item">
+      <time datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%B %-d, %Y" }}
+      </time>
+
+      <h2 class="news-headline">
+          {{ post.title }}
+      </h2>
+
+      <!-- 140-char excerpt: first paragraph or explicit excerpt -->
+      <p>{{ post.excerpt | truncatewords: 140 | markdownify }}</p>
+    </article>
+  {% endfor %}
+
+</div>

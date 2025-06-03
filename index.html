@@ -1,28 +1,59 @@
 ---
-layout: default       
+layout: default
 title: Yana Veitsman
 permalink: /
 ---
 
-<div class="news-wrapper">
-  
-  <h3 class="news-title">Hi and welcome to my personal page! <br>Here are some new things that happened.
-  </h3>
+<div class="about-wrapper">
 
-  <!-- Loop through all Jekyll posts, newest first -->
-  {% for post in site.posts %}
-    <article class="news-item">
-      <time datetime="{{ post.date | date_to_xmlschema }}">
-        {{ post.date | date: "%B %-d, %Y" }}
-      </time>
+  <!-- Profile photo -->
+  <img src="{{ '/assets/images/profile.png' | relative_url }}"
+       alt="Profile picture of Yana Veitsman"
+       class="profile-pic">
 
-      <h2 class="news-headline">
-          {{ post.title }}
-      </h2>
+  <!-- Bio text -->
+  <div class="about-text">
+    <p>
+      I’m currently in the <strong>second year of my Master’s program</strong>, working as a
+      <strong>student research assistant</strong> at <strong>Saarland University</strong> under
+      <a href="https://www.mhahn.info" target="_blank" rel="noopener">Prof.&nbsp;Dr.&nbsp;Michael&nbsp;Hahn</a>
+      and <a href="https://www.uni-saarland.de/lehrstuhl/demberg/members/verademberg.html" target="_blank" rel="noopener">Prof.&nbsp;Dr.&nbsp;Vera&nbsp;Demberg</a>.
+    </p>
+    
+    <p>
+      I've worked on several projects covering different aspects of large language models, from the expressivity of transformer and state-space models to mechanistic interpretability in in-context learning. 
+      Recently, we finished a project aimed at understanding <em>which theoretical limitations of transformer architecture persist in pre-trained LLMs (PLMs)</em>.
+    </p>
+    
+    <p>
+      I’ve also begun my thesis with <a href="https://yihongl1u.github.io" target="_blank" rel="noopener">Yihong&nbsp;Liu</a> at the <a href="https://cisnlp.github.io" target="_blank" rel="noopener">Schütze&nbsp;Lab</a> at LMU Munich, trying 
+      to figure out <em>why better cross-lingual alignment fails for better cross-lingual transfer</em>.
+    </p>
 
-      <!-- 140-char excerpt: first paragraph or explicit excerpt -->
-      <p>{{ post.excerpt | truncatewords: 140 | markdownify }}</p>
-    </article>
-  {% endfor %}
+    <p>
+      After graduation, <strong>I plan to pursue a PhD</strong> and join my interests in multilingual NLP, mechanistic interpretability, and efficient and robust NLP to make multilingual LLMs more interpretable and robust. 
+      I am looking forward to turn the Left-Behinds and the Scraping-Bys<sup id="fnref-acl"><a href="#fn-acl" class="footnote-ref">[1]</a></sup>
+      at the very least into Hopeful and Rising Stars of the field.
+    </p>
+
+    <p>
+      In my free time, I perform stand-up comedy, make mixed drinks (like espresso martinis and blue lagoon) for my friends, and hit 1.5X my bodyweight squats at the gym. 
+    </p>
+
+    <p>
+      Feel free to hit me up to talk about work or hobbies, I am always happy to chat :)
+    </p>
+  </div>
 
 </div>
+
+<!-- Footnotes ----------------------------------------------------------- -->
+<ol class="footnotes">
+  <li id="fn-acl">
+    1. Joshi et&nbsp;al.&nbsp;(2020).
+    “<em>The State and Fate of Linguistic Diversity in the NLP World</em>.”
+    <a href="https://aclanthology.org/2020.acl-main.560/" target="_blank" rel="noopener">
+      ACL&nbsp;2020.
+    </a>
+  </li>
+</ol>
