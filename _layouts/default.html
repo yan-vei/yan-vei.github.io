@@ -1,24 +1,80 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:description" content="Research Assistant working with Dr. Michael Hahn and Dr. Vera Demberg, Saarland University. I am interested in making multilingual models more interpretable.">
-  <meta name="description" content="Research Assistant working with Dr. Michael Hahn and Dr. Vera Demberg, Saarland University. I am interested in making multilingual models more interpretable.">
-  <meta property="og:locale" content="en">
-  <meta property="og:title" content="Yana Veitsman">
-  <meta property="og:site_name" content="Yana Veitsman">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@yveitsman">
-  <meta property="twitter:title" content="Yana Veitsman">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page Title -->
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - Research Assistant in Multilingual NLP{% endif %}</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="author" content="{{ site.author }}">
+    <meta name="keywords" content="Yana Veitsman, NLP, natural language processing, multilingual, machine learning, transformer, mechanistic interpretability, research, Saarland University">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:image" content="{{ '/assets/images/profile.png' | absolute_url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="{{ page.url | absolute_url }}">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:image" content="{{ '/assets/images/profile.png' | absolute_url }}">
+    <meta name="twitter:site" content="@{{ site.twitter_username }}">
+    <meta name="twitter:creator" content="@{{ site.twitter_username }}">
+    
+    <!-- Favicons -->
+    <link rel="icon" href="{{ '/assets/icons/favicon.ico' | relative_url }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ '/assets/icons/favicon.ico' | relative_url }}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}",
+      "email": "{{ site.email }}",
+      "jobTitle": "Research Assistant",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Saarland University"
+      },
+      "description": "{{ site.description | strip_html | strip_newlines }}",
+      "image": "{{ '/assets/images/profile.png' | absolute_url }}",
+      "sameAs": [
+        "https://twitter.com/{{ site.twitter_username }}",
+        "https://github.com/{{ site.github_username }}"
+      ],
+      "knowsAbout": [
+        "Natural Language Processing",
+        "Machine Learning",
+        "Multilingual NLP",
+        "Transformer Models",
+        "Mechanistic Interpretability",
+        "Large Language Models"
+      ]
+    }
+    </script>
+    
+    <!-- Site verification (add when available) -->
+    <!-- <meta name="google-site-verification" content="your-verification-code"> -->
   </head>
   <body>
     {% include header.html %}
-    <main class="site-main">
+    <main class="site-main" role="main">
       {{ content }}
     </main>
     {% include footer.html %}

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yveitsman.xyz/sitemap.xml
+
+# Disallow crawling of certain paths
+Disallow: /assets/files/
