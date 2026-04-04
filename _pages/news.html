@@ -7,8 +7,10 @@ permalink: /news/
 
 <div class="news-wrapper">
 
-  <!-- Loop through all Jekyll posts, newest first -->
-  {% for post in site.posts %}
+  {% assign recent_posts = site.posts | slice: 0, 3 %}
+  {% assign older_posts = site.posts | offset: 3 %}
+
+  {% for post in recent_posts %}
     <article class="news-item">
       <time datetime="{{ post.date | date_to_xmlschema }}">
         {{ post.date | date: "%B %-d, %Y" }}
@@ -22,5 +24,27 @@ permalink: /news/
       <p>{{ post.excerpt | truncatewords: 140 | markdownify }}</p>
     </article>
   {% endfor %}
+
+  {% if older_posts.size > 0 %}
+    <details class="news-archive">
+      <summary>See older news</summary>
+
+      <div class="news-archive-list">
+        {% for post in older_posts %}
+          <article class="news-item">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%B %-d, %Y" }}
+            </time>
+
+            <h2 class="news-headline">
+                {{ post.title }}
+            </h2>
+
+            <p>{{ post.excerpt | truncatewords: 140 | markdownify }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </details>
+  {% endif %}
 
 </div>
