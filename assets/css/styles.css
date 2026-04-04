@@ -490,6 +490,8 @@ body {
   margin:0 auto;
 }
 .news-archive summary{
+  display:table;
+  margin:0 auto;
   cursor:pointer;
   font-weight:600;
   list-style:none;

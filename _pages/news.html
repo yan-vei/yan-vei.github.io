@@ -6,11 +6,7 @@ permalink: /news/
 ---
 
 <div class="news-wrapper">
-
-  {% assign recent_posts = site.posts | slice: 0, 3 %}
-  {% assign older_posts = site.posts | offset: 3 %}
-
-  {% for post in recent_posts %}
+  {% for post in site.posts limit:3 %}
     <article class="news-item">
       <time datetime="{{ post.date | date_to_xmlschema }}">
         {{ post.date | date: "%B %-d, %Y" }}
@@ -25,12 +21,12 @@ permalink: /news/
     </article>
   {% endfor %}
 
-  {% if older_posts.size > 0 %}
+  {% if site.posts.size > 3 %}
     <details class="news-archive">
       <summary>See older news</summary>
 
       <div class="news-archive-list">
-        {% for post in older_posts %}
+        {% for post in site.posts offset:3 %}
           <article class="news-item">
             <time datetime="{{ post.date | date_to_xmlschema }}">
               {{ post.date | date: "%B %-d, %Y" }}
