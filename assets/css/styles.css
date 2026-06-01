@@ -491,6 +491,11 @@ body {
 
 /* ---- single post tweaks ---- */
 
+.post-back-link{
+  margin:0 0 1rem;
+  font-size:0.9rem;
+}
+
 .post-title{
   margin:0 0 0.5rem;
 }
@@ -522,4 +527,3 @@ body {
   text-align: left;
   align-items: flex-start;
 }
-

@@ -1,4 +1,16 @@
+---
+layout: default
+---
+
 <article class="post-wrapper">
+
+  <p class="post-back-link">
+    {% if page.categories contains "blog" %}
+      <a href="{{ '/blog/' | relative_url }}">Back to Blog</a>
+    {% else %}
+      <a href="{{ '/news/' | relative_url }}">Back to News</a>
+    {% endif %}
+  </p>
 
   <h1 class="post-title">{{ page.title }}</h1>
 

@@ -1,12 +1,25 @@
 ---
 layout: default
 title: Blog
-description: "Research blog by Yana Veitsman covering insights and thoughts on multilingual NLP, transformer models, mechanistic interpretability, and machine learning research."
+description: "Personal blog by Yana Veitsman on mostly very subjective non-scientific and sometimes scientific topics."
 permalink: /blog/
 ---
 
-<h3 class="center-text"><em>Posts coming soon...</em></h1>
-
 <ul class="blog-list">
-
+  {% for post in site.posts %}
+    {% if post.categories contains "blog" %}
+      <li>
+        <h3 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        <p class="post-meta muted">{{ post.date | date: "%B %-d, %Y" }}</p>
+        {% if post.excerpt %}
+          <p class="post-excerpt">
+            {{ post.excerpt | markdownify | strip_html | truncatewords: 45 }}
+            <a href="{{ post.url | relative_url }}">Read here.</a>
+          </p>
+        {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
 </ul>
