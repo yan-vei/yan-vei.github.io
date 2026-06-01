@@ -1,5 +1,5 @@
 ---
-layout: post                 # falls back to “default” if you don’t have a post layout
+layout: post                 
 title:  "Paper Accepted at COLM 2025 ✨"
 date:   2025-07-31 10:00:00 +0200
 categories: [research, publications]

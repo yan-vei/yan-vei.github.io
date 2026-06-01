@@ -6,14 +6,11 @@ permalink: /news/
 ---
 
 <div class="news-wrapper">
-
-  <!-- Loop through all Jekyll posts, newest first -->
-  {% for post in site.posts %}
-    {% unless post.categories contains "blog" %}
-      <article class="news-item">
-        <time datetime="{{ post.date | date_to_xmlschema }}">
-          {{ post.date | date: "%B %-d, %Y" }}
-        </time>
+  {% for post in site.posts limit:3 %}
+    <article class="news-item">
+      <time datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%B %-d, %Y" }}
+      </time>
 
         <h2 class="news-headline">
             {{ post.title }}
@@ -24,5 +21,27 @@ permalink: /news/
       </article>
     {% endunless %}
   {% endfor %}
+
+  {% if site.posts.size > 3 %}
+    <details class="news-archive">
+      <summary>See older news</summary>
+
+      <div class="news-archive-list">
+        {% for post in site.posts offset:3 %}
+          <article class="news-item">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%B %-d, %Y" }}
+            </time>
+
+            <h2 class="news-headline">
+                {{ post.title }}
+            </h2>
+
+            <p>{{ post.excerpt | truncatewords: 140 | markdownify }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </details>
+  {% endif %}
 
 </div>

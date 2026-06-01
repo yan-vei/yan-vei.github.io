@@ -1,5 +1,5 @@
 ---
-layout: post                 # falls back to “default” if you don’t have a post layout
+layout: post                 
 title:  "Master Thesis Defended! 📜"
 date:   2025-10-28 10:00:00 +0200
 categories: [defense, research]

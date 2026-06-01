@@ -484,9 +484,37 @@ body {
 .news-item p{margin:0.5rem 0 0;max-width:40rem}
 .news-item a{text-decoration:none;color:inherit}
 .news-item a:hover{text-decoration:underline}
+.news-archive{
+  width:100%;
+  max-width:40rem;
+  margin:0 auto;
+}
+.news-archive summary{
+  display:table;
+  margin:0 auto;
+  cursor:pointer;
+  font-weight:600;
+  list-style:none;
+}
+.news-archive summary::-webkit-details-marker{
+  display:none;
+}
+.news-archive summary::after{
+  content:" +";
+}
+.news-archive[open] summary::after{
+  content:" -";
+}
+.news-archive-list{
+  display:flex;
+  flex-direction:column;
+  gap:2.5rem;
+  padding-top:1.5rem;
+}
 @media(max-width:600px){
   .news-wrapper{gap:1.75rem}
   .news-headline{font-size:1.1rem}
+  .news-archive-list{gap:1.75rem}
 }
 
 /* ---- single post tweaks ---- */
