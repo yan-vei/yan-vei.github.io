@@ -3,10 +3,11 @@ layout: default
 title: News
 description: "Latest research news and updates from Yana Veitsman - recent publications, conference presentations, and research developments in multilingual NLP and mechanistic interpretability."
 permalink: /news/
+excerpt_separator: "<!-- excerpt -->"
 ---
 
 <div class="news-wrapper">
-  {% for post in site.posts limit:3 %}
+  {% for post in site.categories.news limit:3 %}
     <article class="news-item">
       <time datetime="{{ post.date | date_to_xmlschema }}">
         {{ post.date | date: "%B %-d, %Y" }}
@@ -19,15 +20,14 @@ permalink: /news/
         <!-- 140-char excerpt: first paragraph or explicit excerpt -->
         <p>{{ post.excerpt | truncatewords: 140 | markdownify }}</p>
       </article>
-    {% endunless %}
   {% endfor %}
 
-  {% if site.posts.size > 3 %}
+  {% if site.categories.news.size > 3 %}
     <details class="news-archive">
       <summary>See older news</summary>
 
       <div class="news-archive-list">
-        {% for post in site.posts offset:3 %}
+        {% for post in site.categories.news offset:3 %}
           <article class="news-item">
             <time datetime="{{ post.date | date_to_xmlschema }}">
               {{ post.date | date: "%B %-d, %Y" }}
