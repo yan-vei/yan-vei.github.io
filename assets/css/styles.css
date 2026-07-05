@@ -15,6 +15,7 @@
     --accent: #0066ff;
     --radius: 6px;
     --max-width: 100ch;
+    --content-width: min(70vw, 72rem);
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI',
                  Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     --font-mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
@@ -285,28 +286,32 @@ body {
 
 
 /* ---- publication list ---- */
+.publications-wrapper {
+  width: 50vw;
+  max-width: calc(100% - 2.5rem);
+  margin: 0 auto;
+}
+
 .pub-list {
   list-style-position: inside;   /* numbers line up with centred text */
   padding: 0;
-  margin: 0 auto;
-  text-align: justify;
+  margin: 0;
+  text-align: left;
   line-height: 1.5;
   list-style: none;
   flex-direction: column;
   display: flex;
-  align-items: justify;
-  max-width: max-content;
+  width: 100%;
 }
 
 .pub-list-header {
   padding: 0;
-  margin: 1rem auto;
+  margin: 1rem 0;
   text-align: left;
   line-height: 1.5;
   flex-direction: column;
   display: flex;
-  align-items: left;
-  max-width: max-content;
+  width: 100%;
 }
 
 .pub-list li + li {
@@ -318,7 +323,8 @@ body {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  max-width: var(--max-width);
+  width: var(--content-width);
+  max-width: calc(100% - 2.5rem);
 }
 
 .blog-list li + li {
@@ -477,16 +483,15 @@ body {
 
 /* ---- news page tweaks ---- */
 .news-wrapper{
-  display:flex;flex-direction:column;gap:2.5rem;max-width:var(--max-width);margin:0 auto;padding-top:0.5rem}
+  display:flex;flex-direction:column;gap:2.5rem;width:var(--content-width);max-width:calc(100% - 2.5rem);margin:0 auto;padding-top:0.5rem}
 .news-title{text-align:center;margin:0.5rem 0 1.5rem}
 .news-item time{font-size:0.85rem;color:var(--text-light,#727272);margin-bottom:0.25rem}
 .news-headline{margin:0;font-size:1.25rem;line-height:1.3}
-.news-item p{margin:0.5rem 0 0;max-width:40rem}
+.news-item p{margin:0.5rem 0 0}
 .news-item a{text-decoration:none;color:inherit}
 .news-item a:hover{text-decoration:underline}
 .news-archive{
   width:100%;
-  max-width:40rem;
   margin:0 auto;
 }
 .news-archive summary{
@@ -534,14 +539,13 @@ body {
 }
 .post-content{
   text-align:left;          /* regular paragraph flow */
-  max-width:40rem;
 }
 
 /* ── news-list: centred block, left-aligned text ───────────── */
 .news-item{
   /* centre the whole post block in the viewport */
   margin: 0 auto;            /* auto left/right → centred       */
-  max-width: 40rem;          /* optional: stops lines getting wide */
+  width: 100%;
   
   /* keep the *text itself* left-aligned */
   text-align: left;          
@@ -551,7 +555,19 @@ body {
 /* ── single-post page (if you added _layouts/post.html) ────── */
 .post-wrapper{
   margin: 0 auto;
-  max-width: 40rem;          /* same comfortable width cap      */
+  width: var(--content-width);
+  max-width: calc(100% - 2.5rem);
   text-align: left;
   align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .pub-list,
+  .pub-list-header,
+  .blog-list,
+  .news-wrapper,
+  .post-wrapper {
+    width: 100%;
+    max-width: none;
+  }
 }
